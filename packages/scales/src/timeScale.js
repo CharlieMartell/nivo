@@ -18,6 +18,7 @@ export const timeScale = (
         min = 'auto',
         max = 'auto',
         useUTC = true,
+        nice = false,
     },
     xy,
     width,
@@ -44,6 +45,7 @@ export const timeScale = (
 
     const scale = useUTC ? scaleUtc() : scaleTime()
     scale.domain([minValue, maxValue]).range([0, size])
+    if (nice) scale.nice()
 
     scale.type = 'time'
     scale.useUTC = useUTC
